@@ -1,8 +1,14 @@
 # mylife
 
-## Git環境構築（Mac）
+## Git環境構築の完全ガイド（Mac）
 
-1. Homebrewのインストール
+1. GitHubアカウントの作成
+- [GitHub](https://github.com)にアクセス
+- 「Sign up」をクリック
+- ユーザー名、メールアドレス、パスワードを入力
+- アカウントの認証を完了
+
+2. Homebrewのインストール
 ```bash
 # Homebrewをインストール
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -12,7 +18,7 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-2. Gitのインストール
+3. Gitのインストール
 ```bash
 # Gitをインストール
 brew install git
@@ -21,7 +27,7 @@ brew install git
 git --version
 ```
 
-3. Gitの初期設定
+4. Gitの初期設定
 ```bash
 # ユーザー名とメールアドレスの設定
 git config --global user.name "あなたの名前"
@@ -31,7 +37,23 @@ git config --global user.email "あなたのメールアドレス"
 git config --list
 ```
 
-## Gitセットアップ手順
+5. SSHキーの設定（推奨）
+```bash
+# SSHキーの生成
+ssh-keygen -t ed25519 -C "あなたのメールアドレス"
+
+# SSHエージェントの起動
+eval "$(ssh-agent -s)"
+
+# SSHキーの追加
+ssh-add ~/.ssh/id_ed25519
+
+# 公開キーの表示（これをGitHubに登録）
+cat ~/.ssh/id_ed25519.pub
+```
+- GitHubの[SSH and GPG keys](https://github.com/settings/keys)設定ページで公開キーを追加
+
+## リポジトリのセットアップ
 
 1. GitHubでリポジトリを作成
 - リポジトリ名：mylife
